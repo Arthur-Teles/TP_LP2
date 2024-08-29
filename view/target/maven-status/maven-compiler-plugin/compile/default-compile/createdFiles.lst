@@ -1,0 +1,5 @@
+module-info.class
+br\cefetmg\view\SecondaryController.class
+br\cefetmg\view\PrimaryController.class
+br\cefetmg\view\LoginController.class
+br\cefetmg\view\App.class
