@@ -1,0 +1,19 @@
+.mainFxmlClass {
+    -fx-background-color: gainsboro;
+}
+
+.header {
+    -fx-background-color: black; /* Cor de fundo */
+    -fx-padding: 15px; /* Espaçamento interno */
+    -fx-text-fill: white; /* Cor do texto */
+    -fx-font-size: 16px; /* Tamanho da fonte */
+    -fx-font-weight: bold; /* Peso da fonte */
+}
+
+.footer {
+    -fx-background-color: black; /* Cor de fundo */
+    -fx-padding: 15px; /* Espaçamento interno */
+    -fx-text-fill: white; /* Cor do texto */
+    -fx-font-size: 16px; /* Tamanho da fonte */
+    -fx-font-weight: bold; /* Peso da fonte */
+}
