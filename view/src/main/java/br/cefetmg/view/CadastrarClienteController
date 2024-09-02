@@ -1,67 +1,74 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package br.cefetmg.view;
 
-import br.cefetmg.view.utils.CategoriaFuncionario;
+import br.cefetmg.controller.ControllerCadastroCliente;
+import br.cefetmg.entidades.Cliente;
 import java.net.URL;
-import java.util.*;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author Aluno
- */
-public class CadastrarFuncionarioController implements Initializable {
+public class CadastrarClienteController implements Initializable {
 
-    @FXML
+     @FXML
     private TextField textFieldNome;
 
     @FXML
-    private TextField textFieldTelefone;
+    private TextField textFieldLogradouro;
 
     @FXML
-    private ComboBox<CategoriaFuncionario> comboBoxTipo;
-    
-    private ArrayList<CategoriaFuncionario> categorias = new ArrayList<>();
-    
-    private ObservableList<CategoriaFuncionario> obsCategorias;
-    
+    private TextField textFieldBairro;
+
     @FXML
-    public void cadastrarFuncionario() {
-        
-        String nome = textFieldNome.getText();
-        String telefone = textFieldTelefone.getText();
-    }
+    private Button enviarButton;
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        carregarCategorias();
-    }    
-    
-    public void carregarCategorias() {
-        
-        CategoriaFuncionario categoriaF1 = new CategoriaFuncionario (1, "Administrador");
-        CategoriaFuncionario categoriaF2 = new CategoriaFuncionario (1, "Atendente");
-        CategoriaFuncionario categoriaF3 = new CategoriaFuncionario (1, "Entregador");
-        
-        categorias.add(categoriaF1);
-        categorias.add(categoriaF2);
-        categorias.add(categoriaF3);
-        
-        obsCategorias = FXCollections.observableArrayList(categorias);
-        
-        comboBoxTipo.setItems(obsCategorias);
-        
+        // TODO
     }
-    
+
+    @FXML
+    public void cadastrarCliente() {
+        
+         String nome = textFieldNome.getText();
+         String logradouro = textFieldLogradouro.getText();
+         String bairro = textFieldBairro.getText();
+         
+         if (nome == null || logradouro == null || bairro == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Todos os campos precisam ser preenchidos");
+            alert.setHeaderText("");
+            alert.show();
+            return;
+        }
+         
+         Alert alert = new Alert(Alert.AlertType.NONE);
+        try {
+
+            Cliente cliente = new Cliente();
+            ControllerCadastroCliente controllerCC = new ControllerCadastroCliente();
+
+            cliente.setNome(nome);
+            cliente.setLogradouro(logradouro);
+            cliente.setBairro(bairro);
+
+            controllerCC.cadastrarCliente(cliente);
+
+        } catch (Exception e) {
+
+            System.out.println(e.toString());
+            alert.setAlertType(Alert.AlertType.ERROR);
+            alert.setContentText("Error: " + e.getMessage());
+
+        }
+
+        alert.show();
+        Stage stage = (Stage) textFieldLogradouro.getScene().getWindow();
+        stage.close();
+    }
+         
 }
