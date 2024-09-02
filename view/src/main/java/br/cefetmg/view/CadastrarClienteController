@@ -1,0 +1,67 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
+ */
+package br.cefetmg.view;
+
+import br.cefetmg.view.utils.CategoriaFuncionario;
+import java.net.URL;
+import java.util.*;
+import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
+
+/**
+ * FXML Controller class
+ *
+ * @author Aluno
+ */
+public class CadastrarFuncionarioController implements Initializable {
+
+    @FXML
+    private TextField textFieldNome;
+
+    @FXML
+    private TextField textFieldTelefone;
+
+    @FXML
+    private ComboBox<CategoriaFuncionario> comboBoxTipo;
+    
+    private ArrayList<CategoriaFuncionario> categorias = new ArrayList<>();
+    
+    private ObservableList<CategoriaFuncionario> obsCategorias;
+    
+    @FXML
+    public void cadastrarFuncionario() {
+        
+        String nome = textFieldNome.getText();
+        String telefone = textFieldTelefone.getText();
+    }
+    
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        carregarCategorias();
+    }    
+    
+    public void carregarCategorias() {
+        
+        CategoriaFuncionario categoriaF1 = new CategoriaFuncionario (1, "Administrador");
+        CategoriaFuncionario categoriaF2 = new CategoriaFuncionario (1, "Atendente");
+        CategoriaFuncionario categoriaF3 = new CategoriaFuncionario (1, "Entregador");
+        
+        categorias.add(categoriaF1);
+        categorias.add(categoriaF2);
+        categorias.add(categoriaF3);
+        
+        obsCategorias = FXCollections.observableArrayList(categorias);
+        
+        comboBoxTipo.setItems(obsCategorias);
+        
+    }
+    
+}
