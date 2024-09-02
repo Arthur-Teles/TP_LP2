@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="br.cefetmg.view.CadastrarFuncionarioController">
+    <stylesheets>
+        <URL value="@/styles/cadastrarfuncionario.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="177.0" layoutY="35.0" text="Cadastrar Funcionário">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="22.0" layoutY="105.0" text="Preencha os campos abaixo:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="28.0" layoutY="224.0" text="Telefone:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="28.0" layoutY="170.0" text="Nome:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="28.0" layoutY="272.0" text="Tipo de Funcionário:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textFieldNome" layoutX="97.0" layoutY="170.0" />
+      <TextField fx:id="textFieldTelefone" layoutX="114.0" layoutY="224.0" />
+      <ComboBox fx:id="comboBoxTipo" layoutX="188.0" layoutY="272.0" prefWidth="150.0" promptText="Selecionar Tipo" />
+   </children>
+</AnchorPane>
