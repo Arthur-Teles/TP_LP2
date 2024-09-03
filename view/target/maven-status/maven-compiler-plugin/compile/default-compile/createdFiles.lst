@@ -1,5 +1,9 @@
+br\cefetmg\view\utils\CategoriaFuncionario.class
+br\cefetmg\view\CadastrarPedidoController.class
 br\cefetmg\view\SecondaryController.class
+br\cefetmg\view\App.class
+br\cefetmg\view\CadastrarClienteController.class
 br\cefetmg\view\PrimaryController.class
 br\cefetmg\view\LoginController.class
-br\cefetmg\view\App.class
 br\cefetmg\view\CadastrarProdutoController.class
+br\cefetmg\view\CadastrarFuncionarioController.class

@@ -10,6 +10,8 @@ public class Funcionario {
     private String nome;  
     private String senha;
     private String telefone;
+    int idEmpresa;
+    private TipoPerfil tipoPerfil;
 
     public int getId() {
         return id;
@@ -41,5 +43,14 @@ public class Funcionario {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+    
+    public void setTipoPerfil(String tipo) {
+        
+        this.tipoPerfil = TipoPerfil.tipoFuncionario(tipo);
+    }
+    
+    public TipoPerfil getTipoPerfil() {
+        return this.tipoPerfil;
     }
 }

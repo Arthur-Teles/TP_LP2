@@ -4,12 +4,14 @@ import javax.persistence.*;
 
 @Entity
 public class Produto {
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int idItemPedido;
     private String nome;
     private String localizacao;
+    private String marca;
 
     public int getId() {
         return id;
@@ -41,5 +43,13 @@ public class Produto {
 
     public void setLocalizacao(String localizacao) {
         this.localizacao = localizacao;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 }

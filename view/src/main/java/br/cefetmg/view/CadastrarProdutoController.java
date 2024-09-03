@@ -21,6 +21,9 @@ public class CadastrarProdutoController implements Initializable {
 
     @FXML
     private TextField localizacaoProdutoFxml;
+    
+    @FXML
+    private TextField marcaProdutoFxml;
 
     @FXML
     private Button enviarProduto;
@@ -35,8 +38,9 @@ public class CadastrarProdutoController implements Initializable {
 
         String nomeProduto = nomeProdutoFxml.getText();
         String localizacaoProduto = localizacaoProdutoFxml.getText();
+        String marcaProduto = marcaProdutoFxml.getText();
 
-        if (nomeProduto == null || localizacaoProduto == null) {
+        if (nomeProduto == null || localizacaoProduto == null || marcaProduto == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Todos os campos precisam ser preenchidos");
             alert.setHeaderText("");
@@ -52,6 +56,7 @@ public class CadastrarProdutoController implements Initializable {
 
             produto.setNome(nomeProduto);
             produto.setLocalizacao(localizacaoProduto);
+            produto.setMarca(marcaProduto);
 
             controllerCP.cadastrarProduto(produto);
 

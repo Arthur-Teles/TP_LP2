@@ -7,7 +7,7 @@ public class ControllerCadastroItemPedido {
     
     ItemPedidoDAO itemPedidoDAO = new ItemPedidoDAO();
     
-    public void cadastarItemPedido(ItemPedido itemPedido) {
+    public void cadastrarItemPedido(ItemPedido itemPedido) {
         
         itemPedidoDAO.inserirItemPedido(itemPedido);
     }

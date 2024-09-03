@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="447.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.cefetmg.view.CadastrarPedidoController">
+    <stylesheets>
+        <URL value="@/styles/cadastrarpedido.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="197.0" layoutY="14.0" text="Cadastrar Pedido">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="61.0" text="Preencha os campos abaixo:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="111.0" text="Nome do Produto:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="197.0" layoutY="153.0" prefHeight="20.0" prefWidth="76.0" text="Quantidade:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="153.0" text="Valor unitário:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="406.0" layoutY="153.0" text="Valor total:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="200.0" text="Marca do Produto:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="244.0" text="Forma de pagamento:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="283.0" text="Observações:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="enviar" layoutX="521.0" layoutY="399.0" mnemonicParsing="false" onAction="#cadastrarPedido" text="Enviar" />
+      <TextField fx:id="textFieldNome" layoutX="151.0" layoutY="109.0" />
+      <TextField fx:id="textFieldUni" layoutX="115.0" layoutY="151.0" prefHeight="25.0" prefWidth="48.0" />
+      <TextField fx:id="textFieldQntd" layoutX="288.0" layoutY="151.0" prefHeight="25.0" prefWidth="48.0" />
+      <TextField fx:id="textFieldTot" layoutX="489.0" layoutY="151.0" prefHeight="25.0" prefWidth="48.0" />
+      <TextField fx:id="textFieldMarca" layoutX="151.0" layoutY="198.0" />
+      <TextArea fx:id="textAreaObs" layoutX="115.0" layoutY="283.0" prefHeight="97.0" prefWidth="296.0" />
+      <ComboBox fx:id="comboBoxForma" layoutX="169.0" layoutY="242.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>

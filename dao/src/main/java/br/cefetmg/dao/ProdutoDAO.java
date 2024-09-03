@@ -38,6 +38,7 @@ public class ProdutoDAO {
                 produtoRecuperado.setNome(produto.getNome());
                 produtoRecuperado.setLocalizacao(produto.getLocalizacao());
                 produtoRecuperado.setIdItemPedido(produto.getIdItemPedido());
+                produtoRecuperado.setMarca(produto.getMarca());
             } else {
                 System.out.println("Não foi possível encontrar um produto com o ID fornecido!");
             }
@@ -92,6 +93,7 @@ public class ProdutoDAO {
             System.out.println("Nome do produto: " + produto.getNome());
             System.out.println("ID do produto: " + produto.getId());
             System.out.println("Localizão do produto: " + produto.getLocalizacao());
+            System.out.println("Marca do produto: " + produto.getMarca());
             System.out.println("ID do Item pedido referente ao produto: " + produto.getIdItemPedido());
         }
 

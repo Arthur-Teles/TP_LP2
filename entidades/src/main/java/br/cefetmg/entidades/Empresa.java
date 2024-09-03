@@ -1,5 +1,6 @@
 package br.cefetmg.entidades;
 
+import java.util.ArrayList;
 import javax.persistence.*;
 
 @Entity
@@ -8,6 +9,7 @@ public class Empresa {
     @Id
     private long CNPJ;
     private double porcentagemComissaoEntregador;
+    private ArrayList<Funcionario> funcionarios = new ArrayList<>();
 
     public String getNome() {
         return nome;

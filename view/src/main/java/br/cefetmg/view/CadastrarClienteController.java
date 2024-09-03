@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 public class CadastrarClienteController implements Initializable {
 
-     @FXML
+    @FXML
     private TextField textFieldNome;
 
     @FXML
@@ -24,8 +24,7 @@ public class CadastrarClienteController implements Initializable {
 
     @FXML
     private Button enviarButton;
-    
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -33,20 +32,20 @@ public class CadastrarClienteController implements Initializable {
 
     @FXML
     public void cadastrarCliente() {
-        
-         String nome = textFieldNome.getText();
-         String logradouro = textFieldLogradouro.getText();
-         String bairro = textFieldBairro.getText();
-         
-         if (nome == null || logradouro == null || bairro == null) {
+
+        String nome = textFieldNome.getText();
+        String logradouro = textFieldLogradouro.getText();
+        String bairro = textFieldBairro.getText();
+
+        if (nome == null || logradouro == null || bairro == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Todos os campos precisam ser preenchidos");
             alert.setHeaderText("");
             alert.show();
             return;
         }
-         
-         Alert alert = new Alert(Alert.AlertType.NONE);
+
+        Alert alert = new Alert(Alert.AlertType.NONE);
         try {
 
             Cliente cliente = new Cliente();
@@ -70,5 +69,5 @@ public class CadastrarClienteController implements Initializable {
         Stage stage = (Stage) textFieldLogradouro.getScene().getWindow();
         stage.close();
     }
-         
+
 }
