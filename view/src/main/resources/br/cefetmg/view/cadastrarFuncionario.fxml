@@ -23,24 +23,36 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="28.0" layoutY="224.0" text="Telefone:">
+      <Label layoutX="265.0" layoutY="171.0" text="Telefone:">
          <font>
-            <Font size="16.0" />
+            <Font size="14.0" />
          </font>
       </Label>
       <Label layoutX="28.0" layoutY="170.0" text="Nome:">
          <font>
-            <Font size="16.0" />
+            <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="28.0" layoutY="272.0" text="Tipo de Funcionário:">
+      <Label layoutX="28.0" layoutY="227.0" text="Tipo de Funcionário:">
          <font>
-            <Font size="16.0" />
+            <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="textFieldNome" layoutX="97.0" layoutY="170.0" />
-      <TextField fx:id="textFieldTelefone" layoutX="114.0" layoutY="224.0" />
-      <ComboBox fx:id="comboBoxTipo" layoutX="188.0" layoutY="272.0" prefWidth="150.0" promptText="Selecionar Tipo" />
+      <TextField fx:id="textFieldNome" layoutX="80.0" layoutY="168.0" />
+      <TextField fx:id="textFieldTelefone" layoutX="335.0" layoutY="169.0" />
+      <ComboBox fx:id="comboBoxTipo" layoutX="172.0" layoutY="225.0" prefWidth="150.0" promptText="Selecionar Tipo" />
       <Button fx:id="enviar" layoutX="523.0" layoutY="361.0" mnemonicParsing="false" onAction="#cadastrarFuncionario" text="Enviar" />
+      <Label layoutX="28.0" layoutY="299.0" text="Nome de usuário:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="322.0" layoutY="299.0" text="Senha:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textFieldUsername" layoutX="147.0" layoutY="297.0" />
+      <TextField fx:id="textFieldSenha" layoutX="374.0" layoutY="297.0" />
    </children>
 </AnchorPane>

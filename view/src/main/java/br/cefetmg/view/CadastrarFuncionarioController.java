@@ -37,13 +37,26 @@ public class CadastrarFuncionarioController implements Initializable {
     private ComboBox<String> comboBoxTipo;
     
     @FXML
+    private TextField textFieldUsername;
+
+    @FXML
+    private TextField textFieldSenha;
+    
+    @FXML
     private Button enviar;
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         comboBoxTipo.setItems(FXCollections.observableArrayList("Administrador", "Atendente", "Entregador"));
+        
+        textFieldNome.textProperty().addListener((observable, oldValue, newValue) -> calcularValorTotal());
+        textFieldTelefone.textProperty().addListener((observable, oldValue, newValue) -> calcularValorTotal());
     }
+    
+    public void calcularValorTotal() {
+    
+}
 
     @FXML
     public void cadastrarFuncionario() {
@@ -51,8 +64,10 @@ public class CadastrarFuncionarioController implements Initializable {
         String nome = textFieldNome.getText();
         String telefone = textFieldTelefone.getText();
         String tipo = comboBoxTipo.getSelectionModel().getSelectedItem();
+        String username = textFieldUsername.getText();
+        String senha = textFieldSenha.getText();
         
-        if (nome == null || telefone == null || tipo == null) {
+        if (verificarCampos() == false) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Todos os campos precisam ser preenchidos");
             alert.setHeaderText("");
@@ -69,8 +84,13 @@ public class CadastrarFuncionarioController implements Initializable {
             funcionario.setNome(nome);
             funcionario.setTelefone(telefone);
             funcionario.setTipoPerfil(tipo);
-
+            funcionario.setUsername(username);
+            funcionario.setSenha(senha);
+            
             controllerCF.cadastrarFuncionario(funcionario);
+            
+            alert.setAlertType(Alert.AlertType.INFORMATION);
+            alert.setContentText("Funcionario cadastrado com sucesso! ");
 
         } catch (Exception e) {
 
@@ -83,6 +103,24 @@ public class CadastrarFuncionarioController implements Initializable {
         alert.show();
         Stage stage = (Stage) textFieldNome.getScene().getWindow();
         stage.close();
+    }
+    
+    private Boolean verificarCampos() {
+
+        if (textFieldNome.getText().isEmpty()) {
+            return false;
+        } else if (textFieldTelefone.getText().isEmpty()) {
+            return false;
+        } else if (textFieldSenha.getText().isEmpty()) {
+            return false;
+        } else if (textFieldUsername.getText().isEmpty()) {
+            return false;
+        } else if (comboBoxTipo.getSelectionModel().getSelectedItem().isEmpty()) {
+            return false;
+        }
+
+        return true;
+
     }
 }
 

@@ -9,8 +9,8 @@ public class Funcionario {
     private int id;
     private String nome;  
     private String senha;
+    private String username;
     private String telefone;
-    int idEmpresa;
     private TipoPerfil tipoPerfil;
 
     public int getId() {
@@ -37,6 +37,14 @@ public class Funcionario {
         this.senha = senha;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    
     public String getTelefone() {
         return telefone;
     }

@@ -4,5 +4,4 @@ br\cefetmg\controller\ControllerCadastroFuncionario.class
 br\cefetmg\controller\ControllerCadastroPedido.class
 br\cefetmg\controller\ControllerCadastroCliente.class
 br\cefetmg\controller\ControleLogin.class
-br\cefetmg\controller\ControllerCadastroEmpresa.class
 br\cefetmg\controller\ControllerCadastroProduto.class

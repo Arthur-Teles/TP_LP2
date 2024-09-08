@@ -38,6 +38,7 @@ public class FuncionarioDAO {
                 funcionarioRecuperado.setNome(funcionario.getNome());
                 funcionarioRecuperado.setSenha(funcionario.getSenha());
                 funcionarioRecuperado.setTelefone(funcionario.getTelefone());
+                funcionarioRecuperado.setUsername(funcionario.getUsername());
             } else {
                 System.out.println("Não foi possível encontrar um funcionario com o ID fornecido!");
             }
@@ -93,6 +94,7 @@ public class FuncionarioDAO {
             System.out.println("Id do funcionario: " + funcionario.getId());
             System.out.println("Senha do funcionario: " + funcionario.getSenha());
             System.out.println("Telefone do funcionario: " + funcionario.getTelefone());
+            System.out.println("Username do funcionario: " + funcionario.getUsername());
         }
 
         entityManager.close();

@@ -7,37 +7,49 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="br.cefetmg.view.CadastrarClienteController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.cefetmg.view.CadastrarClienteController">
     <stylesheets>
         <URL value="@/styles/cadastrarcliente.css" />
     </stylesheets>
    <children>
-      <Label layoutX="232.0" layoutY="26.0" text="Cadastrar Cliente">
+      <Label layoutX="232.0" layoutY="26.0" text="Criar Conta">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="26.0" layoutY="69.0" text="Preencha os campos abaixo:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="34.0" layoutY="82.0" text="Cadastrar novo cliente:">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="20.0" layoutY="151.0" text="Nome:">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </Label>
-      <TextField fx:id="textFieldNome" layoutX="83.0" layoutY="148.0" />
-      <Label layoutX="26.0" layoutY="200.0" />
-      <Label layoutX="20.0" layoutY="199.0" text="Forneça informações sobre o endereço:">
+      <Label layoutX="20.0" layoutY="128.0" text="Nome:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="287.0" layoutY="200.0" text="Logradouro:" />
-      <Label layoutX="469.0" layoutY="200.0" text="Bairro:" />
-      <TextField fx:id="textFieldLogradouro" layoutX="359.0" layoutY="196.0" prefHeight="3.0" prefWidth="98.0" />
-      <TextField fx:id="textFieldBairro" layoutX="506.0" layoutY="197.0" prefHeight="25.0" prefWidth="80.0" />
-      <Button fx:id="enviarButton" layoutX="522.0" layoutY="345.0" mnemonicParsing="false" onAction="#cadastrarCliente" text="Enviar" />
+      <TextField fx:id="textFieldNome" layoutX="80.0" layoutY="126.0" />
+      <Label layoutX="26.0" layoutY="200.0" />
+      <Label layoutX="20.0" layoutY="227.0" text="Forneça informações sobre o seu endereço:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="80.0" layoutY="269.0" text="Logradouro:" />
+      <Label layoutX="270.0" layoutY="269.0" text="Bairro:" />
+      <TextField fx:id="textFieldLogradouro" layoutX="155.0" layoutY="264.0" prefHeight="3.0" prefWidth="98.0" />
+      <TextField fx:id="textFieldBairro" layoutX="314.0" layoutY="264.0" prefHeight="25.0" prefWidth="80.0" />
+      <Button fx:id="enviarButton" layoutX="525.0" layoutY="374.0" mnemonicParsing="false" onAction="#cadastrarCliente" text="Enviar" />
+      <Label layoutX="287.0" layoutY="128.0" text="CPF:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textFieldCPF" layoutX="334.0" layoutY="126.0" />
+      <Label layoutX="20.0" layoutY="183.0" text="Telefone:" />
+      <TextField fx:id="textFieldTelefone" layoutX="83.0" layoutY="179.0" />
+      <TextField fx:id="textFieldUsername" layoutX="121.0" layoutY="316.0" />
+      <TextField fx:id="textFieldSenha" layoutX="332.0" layoutY="316.0" />
+      <Label layoutX="20.0" layoutY="320.0" text="Nome de Usuário:" />
+      <Label layoutX="287.0" layoutY="320.0" text="Senha:" />
    </children>
 </AnchorPane>
