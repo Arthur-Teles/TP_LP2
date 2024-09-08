@@ -12,35 +12,42 @@ import javafx.scene.control.TextField;
 import br.cefetmg.controller.ControllerCadastroProduto;
 import br.cefetmg.dao.ProdutoDAO;
 import br.cefetmg.entidades.Produto;
+import javafx.scene.control.TextFormatter;
 import javafx.stage.Stage;
 
 public class CadastrarProdutoController implements Initializable {
 
     @FXML
-    private TextField nomeProdutoFxml;
+    private TextField textFieldNome;
 
     @FXML
-    private TextField localizacaoProdutoFxml;
+    private TextField textFieldValor;
     
     @FXML
-    private TextField marcaProdutoFxml;
+    private TextField textFieldMarca;
 
     @FXML
     private Button enviarProduto;
 
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+        textFieldValor.setTextFormatter(new TextFormatter<>(change -> {
+            if (change.getControlNewText().matches("\\d*(\\.\\d*)?")) {
+                return change;
+            }
+            return null;
+        }));
     }
 
     @FXML
     public void cadastrarProduto() {
 
-        String nomeProduto = nomeProdutoFxml.getText();
-        String localizacaoProduto = localizacaoProdutoFxml.getText();
-        String marcaProduto = marcaProdutoFxml.getText();
+        String nomeProduto = textFieldNome.getText();
+        String marcaProduto = textFieldMarca.getText();
+        double valor = Double.parseDouble(textFieldValor.getText());
 
-        if (nomeProduto == null || localizacaoProduto == null || marcaProduto == null) {
+        if (verificarCampos() == false) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Todos os campos precisam ser preenchidos");
             alert.setHeaderText("");
@@ -55,10 +62,13 @@ public class CadastrarProdutoController implements Initializable {
             ControllerCadastroProduto controllerCP = new ControllerCadastroProduto();
 
             produto.setNome(nomeProduto);
-            produto.setLocalizacao(localizacaoProduto);
             produto.setMarca(marcaProduto);
+            produto.setValorUni(valor);
 
             controllerCP.cadastrarProduto(produto);
+            
+            alert.setAlertType(Alert.AlertType.INFORMATION);
+            alert.setContentText("Produto cadastrado com sucesso! ");
 
         } catch (Exception e) {
 
@@ -69,8 +79,19 @@ public class CadastrarProdutoController implements Initializable {
         }
 
         alert.show();
-        Stage stage = (Stage) localizacaoProdutoFxml.getScene().getWindow();
+        Stage stage = (Stage) textFieldMarca.getScene().getWindow();
         stage.close();
     }
+    
+    private Boolean verificarCampos() {
 
+        if (textFieldNome.getText().isEmpty()) {
+            return false;
+        } else if (textFieldMarca.getText().isEmpty()) {
+            return false;
+        } else if (textFieldValor.getText().isEmpty()) {
+            return false;
+        }
+        return true;
+    }
 }

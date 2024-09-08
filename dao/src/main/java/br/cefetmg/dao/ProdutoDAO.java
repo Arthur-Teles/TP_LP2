@@ -36,8 +36,7 @@ public class ProdutoDAO {
 
             if (produtoRecuperado != null) {
                 produtoRecuperado.setNome(produto.getNome());
-                produtoRecuperado.setLocalizacao(produto.getLocalizacao());
-                produtoRecuperado.setIdItemPedido(produto.getIdItemPedido());
+                produtoRecuperado.setValorUni(produto.getValorUni());
                 produtoRecuperado.setMarca(produto.getMarca());
             } else {
                 System.out.println("Não foi possível encontrar um produto com o ID fornecido!");
@@ -92,9 +91,8 @@ public class ProdutoDAO {
         for (Produto produto : produtos) {
             System.out.println("Nome do produto: " + produto.getNome());
             System.out.println("ID do produto: " + produto.getId());
-            System.out.println("Localizão do produto: " + produto.getLocalizacao());
             System.out.println("Marca do produto: " + produto.getMarca());
-            System.out.println("ID do Item pedido referente ao produto: " + produto.getIdItemPedido());
+            System.out.println("Valor do produto: " + produto.getValorUni());
         }
 
         entityManager.close();

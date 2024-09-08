@@ -56,6 +56,17 @@ public class CadastrarFuncionarioController implements Initializable {
     
     public void calcularValorTotal() {
     
+        try {
+            String primUsername = textFieldNome.getText();
+            String segUsernameBruto = textFieldTelefone.getText();
+
+            String segUsername = segUsernameBruto.length() > 5 ? segUsernameBruto.substring(0, 5): segUsernameBruto;
+
+            textFieldUsername.setText(primUsername + segUsername);
+
+        } catch (NumberFormatException e) {
+            textFieldUsername.setText("");
+        }
 }
 
     @FXML
@@ -90,7 +101,7 @@ public class CadastrarFuncionarioController implements Initializable {
             controllerCF.cadastrarFuncionario(funcionario);
             
             alert.setAlertType(Alert.AlertType.INFORMATION);
-            alert.setContentText("Funcionario cadastrado com sucesso! ");
+            alert.setContentText("Produto cadastrado com sucesso! ");
 
         } catch (Exception e) {
 

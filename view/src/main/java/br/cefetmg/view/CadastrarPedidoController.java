@@ -126,7 +126,6 @@ public class CadastrarPedidoController implements Initializable {
             ControllerCadastroItemPedido controllerCIP = new ControllerCadastroItemPedido();
 
             itemPedido.setQuantidade(quantidade);
-            itemPedido.setValorUnitario(valorUni);
 
             controllerCIP.cadastrarItemPedido(itemPedido);
 

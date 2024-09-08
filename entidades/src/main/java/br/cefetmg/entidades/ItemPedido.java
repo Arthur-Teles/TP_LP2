@@ -9,9 +9,8 @@ public class ItemPedido {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     private int idPedido;
-    private double valorUnitario;
+    private int idProduto;
     private int quantidade;
-    private ArrayList<Produto> produtos = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -29,12 +28,12 @@ public class ItemPedido {
         this.idPedido = idPedido;
     }
 
-    public double getValorUnitario() {
-        return valorUnitario;
+    public int getIdProduto() {
+        return idProduto;
     }
 
-    public void setValorUnitario(double valorUnitario) {
-        this.valorUnitario = valorUnitario;
+    public void setIdProduto(int idProduto) {
+        this.idProduto = idProduto;
     }
 
     public int getQuantidade() {

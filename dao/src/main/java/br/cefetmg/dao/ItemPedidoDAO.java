@@ -37,7 +37,6 @@ public class ItemPedidoDAO {
             if (itemPedidoRecuperado != null) {
                 itemPedidoRecuperado.setIdPedido(itemPedido.getIdPedido());
                 itemPedidoRecuperado.setQuantidade(itemPedido.getQuantidade());
-                itemPedidoRecuperado.setValorUnitario(itemPedido.getValorUnitario());
             } else {
                 System.out.println("Não foi possível encontrar um itemPedido com o ID fornecido!");
             }
@@ -91,7 +90,6 @@ public class ItemPedidoDAO {
         for (ItemPedido itemPedido : itemPedidos) {
             System.out.println("ID do item Pedido: " + itemPedido.getId());
             System.out.println("Quantidade do item Pedido: " + itemPedido.getQuantidade());
-            System.out.println("Valor do item Pedido: " + itemPedido.getValorUnitario());
             System.out.println("ID do pedido referente ao item Pedido: " + itemPedido.getIdPedido());
         }
         

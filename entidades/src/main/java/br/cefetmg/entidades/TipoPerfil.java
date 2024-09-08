@@ -2,7 +2,7 @@ package br.cefetmg.entidades;
 
 public enum TipoPerfil {
 
-    ADMINISTRADOR, ATENDENTE, ENTREGUE;
+    ADMINISTRADOR, ATENDENTE, ENTREGADOR;
     
     public static TipoPerfil tipoFuncionario(String tipo) {
         

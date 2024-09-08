@@ -1,16 +1,14 @@
 package br.cefetmg.entidades;
 
-import br.cefetmg.entidades.Produto;
 import javax.annotation.processing.Generated;
-import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2024-09-08T16:00:51", comments="EclipseLink-2.7.10.v20211216-rNA")
+@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2024-09-08T18:36:49", comments="EclipseLink-2.7.10.v20211216-rNA")
 @StaticMetamodel(ItemPedido.class)
 public class ItemPedido_ { 
 
-    public static volatile ListAttribute<ItemPedido, Produto> produtos;
+    public static volatile SingularAttribute<ItemPedido, Integer> idProduto;
     public static volatile SingularAttribute<ItemPedido, Integer> id;
     public static volatile SingularAttribute<ItemPedido, Integer> idPedido;
     public static volatile SingularAttribute<ItemPedido, Integer> quantidade;

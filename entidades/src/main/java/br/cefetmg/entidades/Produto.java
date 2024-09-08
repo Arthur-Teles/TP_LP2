@@ -8,10 +8,9 @@ public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int idItemPedido;
     private String nome;
-    private String localizacao;
     private String marca;
+    private double valorUni;
 
     public int getId() {
         return id;
@@ -19,14 +18,6 @@ public class Produto {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getIdItemPedido() {
-        return idItemPedido;
-    }
-
-    public void setIdItemPedido(int idItemPedido) {
-        this.idItemPedido = idItemPedido;
     }
 
     public String getNome() {
@@ -37,12 +28,12 @@ public class Produto {
         this.nome = nome;
     }
 
-    public String getLocalizacao() {
-        return localizacao;
+    public double getValorUni() {
+        return valorUni;
     }
 
-    public void setLocalizacao(String localizacao) {
-        this.localizacao = localizacao;
+    public void setValorUni(double valorUni) {
+        this.valorUni = valorUni;
     }
 
     public String getMarca() {

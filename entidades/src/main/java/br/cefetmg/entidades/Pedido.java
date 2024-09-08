@@ -11,7 +11,6 @@ public class Pedido {
     private Date data;
     private double valorTotal;
     private StatusPedido status;
-    private ArrayList<ItemPedido> itensPedido = new ArrayList<>();
 
     public Date getData() {
         return data;

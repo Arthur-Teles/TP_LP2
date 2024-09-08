@@ -15,27 +15,33 @@
    <children>
       <Label layoutX="211.0" layoutY="23.0" text="Cadastrar Produto ">
          <font>
-            <Font size="18.0" />
+            <Font size="24.0" />
          </font>
       </Label>
       <Label layoutX="22.0" layoutY="81.0" text="Preencha os campos abaixo: ">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="nomeProduto" layoutX="120.0" layoutY="149.0" />
-      <Label layoutX="22.0" layoutY="151.0" text="Nome:">
+      <TextField fx:id="textFieldNome" layoutX="96.0" layoutY="127.0" />
+      <Label layoutX="22.0" layoutY="129.0" text="Nome:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="22.0" layoutY="209.0" text="Localização:">
+      <Label layoutX="22.0" layoutY="209.0" text="Marca:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="localizacaoProduto" layoutX="120.0" layoutY="207.0" />
-      <Button fx:id="enviarProduto" layoutX="94.0" layoutY="272.0" mnemonicParsing="false" onAction="#cadastrarProduto" text="Enviar" />
+      <TextField fx:id="textFieldValor" layoutX="128.0" layoutY="166.0" prefHeight="25.0" prefWidth="55.0" />
+      <Button fx:id="enviarProduto" layoutX="509.0" layoutY="339.0" mnemonicParsing="false" onAction="#cadastrarProduto" text="Enviar" />
+      <Label layoutX="22.0" layoutY="168.0" text="Valor unitário:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textFieldMarca" layoutX="75.0" layoutY="207.0" />
    </children>
    
 </AnchorPane>
