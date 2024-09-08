@@ -84,7 +84,7 @@ public class ClienteDAO {
 
     }
 
-    public void getClientes() {
+    public List<Cliente> getClientes() {
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("persistence");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -94,17 +94,10 @@ public class ClienteDAO {
         CriteriaQuery<Cliente> criteria = entityManager.getCriteriaBuilder().createQuery(Cliente.class);
         criteria.select(criteria.from(Cliente.class));
         List<Cliente> clientes = entityManager.createQuery(criteria).getResultList();
-
-        for (Cliente cliente : clientes) {
-            System.out.println("Nome do cliente: " + cliente.getNome());
-            System.out.println("CPF do cliente: " + String.valueOf(cliente.getCPF()));
-            System.out.println("Logradouro do cliente: " + cliente.getLogradouro());
-            System.out.println("Bairro do cliente: " + cliente.getBairro());
-            System.out.println("Telefone do cliente: " + cliente.getTelefone());
-        }
         
         entityManager.close();
-
+        
+        return clientes;
     }
     
     public boolean encontrarCliente(String username, String senha) {
@@ -114,9 +107,11 @@ public class ClienteDAO {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("persistence");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         
-        TypedQuery<Cliente> query = entityManager.createQuery("SELECT c FROM Cliente c WHERE c.username = "+username+" AND c.senha = "+senhaEncriptada, Cliente.class);
+        TypedQuery<Cliente> query = entityManager.createQuery("SELECT c FROM Cliente c WHERE c.username = '"+username+"' AND c.senha = '"+senhaEncriptada+"'", Cliente.class);
+        //TypedQuery<Cliente> query = entityManager.createQuery("SELECT c FROM Cliente c WHERE c.username = 'oi' AND c.senha = 'eae'", Cliente.class);
+        
         List<Cliente> resultado = query.getResultList();
         
-        return resultado != null;
+        return !resultado.isEmpty();
     }
 }

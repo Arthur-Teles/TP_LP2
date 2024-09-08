@@ -1,5 +1,7 @@
+br\cefetmg\controller\ControllerCadastroItemPedido.class
 br\cefetmg\controller\Controller.class
 br\cefetmg\controller\ControllerCadastroFuncionario.class
+br\cefetmg\controller\ControllerCadastroPedido.class
 br\cefetmg\controller\ControllerCadastroCliente.class
 br\cefetmg\controller\ControleLogin.class
 br\cefetmg\controller\ControllerCadastroEmpresa.class

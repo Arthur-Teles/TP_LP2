@@ -1,5 +1,6 @@
 package br.cefetmg.entidades;
 
+import br.cefetmg.entidades.utils.Encriptador;
 import javax.persistence.*;
 
 @Entity
@@ -13,6 +14,22 @@ public class Cliente {
     @Id
     private long CPF;
 
+    public Cliente() {
+        
+    }
+    
+    public Cliente(String nome, String logradouro, String bairro, String telefone, String senha, String username, long CPF) {
+        this.nome = nome;
+        this.logradouro = logradouro;
+        this.bairro = bairro;
+        this.telefone = telefone;
+        this.username = username;
+        this.CPF = CPF;
+        
+        Encriptador encriptador = new Encriptador();
+        this.senha = encriptador.encriptarSenha(senha);
+    }
+    
     public String getNome() {
         return nome;
     }
