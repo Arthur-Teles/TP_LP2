@@ -102,7 +102,7 @@ public class CadastrarFuncionarioController implements Initializable {
             controllerCF.cadastrarFuncionario(funcionario);
             
             alert.setAlertType(Alert.AlertType.INFORMATION);
-            alert.setContentText("Produto cadastrado com sucesso! ");
+            alert.setContentText("Funcionario cadastrado com sucesso! ");
 
         } catch (Exception e) {
 

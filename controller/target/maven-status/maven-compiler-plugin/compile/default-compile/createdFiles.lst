@@ -1,9 +1,12 @@
 br\cefetmg\controller\ControleDeSessao.class
 br\cefetmg\controller\ControllerCadastroItemPedido.class
+br\cefetmg\controller\ControllerPedidos.class
+br\cefetmg\controller\ControleDeEntregas.class
 br\cefetmg\controller\Controller.class
 br\cefetmg\controller\ControllerProdutos.class
 br\cefetmg\controller\ControllerCadastroFuncionario.class
 br\cefetmg\controller\ControllerCadastroPedido.class
+br\cefetmg\controller\ControllerFuncionarios.class
 br\cefetmg\controller\ControllerCadastroCliente.class
 br\cefetmg\controller\ControleLogin.class
 br\cefetmg\controller\ControllerCadastroProduto.class

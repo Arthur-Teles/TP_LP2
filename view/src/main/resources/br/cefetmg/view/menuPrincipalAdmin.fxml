@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="br.cefetmg.view.MenuPrincipalAdminController">
+    <stylesheets>
+        <URL value="@/styles/menuprincipaladmin.css" />
+    </stylesheets>
+   <children>
+      <Button layoutX="46.0" layoutY="24.0" mnemonicParsing="false" onAction="#cadastrarClientes" text="Cadastrar Cliente" />
+      <Button layoutX="430.0" layoutY="24.0" mnemonicParsing="false" onAction="#cadastrarFuncionario" text="Cadastrar Funcionário" />
+      <Button layoutX="55.0" layoutY="342.0" mnemonicParsing="false" onAction="#listarClientes" text="Listar Clientes" />
+      <Button layoutX="439.0" layoutY="342.0" mnemonicParsing="false" onAction="#listarFuncionarios" text="Listar Funcionários" />
+      <Button layoutX="60.0" layoutY="176.0" mnemonicParsing="false" text="Ver Pedidos" />
+      <Button layoutX="247.0" layoutY="176.0" mnemonicParsing="false" onAction="#cadastrarProduto" text="Cadastrar Produtos" />
+      <Button layoutX="450.0" layoutY="176.0" mnemonicParsing="false" text="Excluir Contas" />
+   </children>
+</AnchorPane>
