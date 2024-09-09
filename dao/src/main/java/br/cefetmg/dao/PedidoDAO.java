@@ -38,6 +38,9 @@ public class PedidoDAO {
                 pedidoRecuperado.setData(pedido.getData());
                 pedidoRecuperado.setValorTotal(pedido.getValorTotal());
                 pedidoRecuperado.setStatus(pedido.getStatus());
+                pedidoRecuperado.setFormaPag(pedido.getFormaPag());
+                pedidoRecuperado.setQntd(pedido.getQntd());
+                pedidoRecuperado.setObs(pedido.getObs());
             } else {
                 System.out.println("Não foi possível encontrar um pedido com o ID fornecido!");
             }

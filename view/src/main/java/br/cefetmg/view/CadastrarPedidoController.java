@@ -1,10 +1,11 @@
 package br.cefetmg.view;
 
-import br.cefetmg.controller.ControllerCadastroPedido;
-import br.cefetmg.entidades.Pedido;
-import br.cefetmg.entidades.ItemPedido;
-import br.cefetmg.controller.ControllerCadastroItemPedido;
+import br.cefetmg.controller.*;
+import br.cefetmg.dao.*;
+import br.cefetmg.entidades.*;
 import java.net.URL;
+import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -23,30 +24,45 @@ public class CadastrarPedidoController implements Initializable {
     private Button enviar;
 
     @FXML
-    private TextField textFieldNome;
-
-    @FXML
-    private TextField textFieldUni;
-
-    @FXML
     private TextField textFieldQntd;
 
     @FXML
     private TextField textFieldTot;
 
     @FXML
-    private TextField textFieldMarca;
-
-    @FXML
     private TextArea textAreaObs;
 
     @FXML
     private ComboBox<String> comboBoxForma;
+    
+    @FXML
+    private ComboBox<Produto> comboBoxProdutos;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        ControllerProdutos controllerProdutos = new ControllerProdutos();
+        List<Produto> produtos = controllerProdutos.listarProdutos();
+        
         comboBoxForma.setItems(FXCollections.observableArrayList("Dinheiro", "Pix", "Cartão de crédito", "Cartão de débito"));
+        comboBoxProdutos.setItems(FXCollections.observableList(produtos));
+        
+        comboBoxProdutos.setCellFactory(lv -> new javafx.scene.control.ListCell<>() {
+            @Override
+            protected void updateItem(Produto produto, boolean empty) {
+                super.updateItem(produto, empty);
+                setText(empty ? null : produto.getNome());
+            }
+        });
 
+        comboBoxProdutos.setButtonCell(new javafx.scene.control.ListCell<>() {
+            @Override
+            protected void updateItem(Produto produto, boolean empty) {
+                super.updateItem(produto, empty);
+                setText(empty ? null : produto.getNome());
+            }
+        });
+                
         textFieldQntd.setTextFormatter(new TextFormatter<>(change -> {
             if (change.getControlNewText().matches("\\d*")) {
                 return change;
@@ -54,25 +70,18 @@ public class CadastrarPedidoController implements Initializable {
             return null;
         }));
 
-        textFieldUni.setTextFormatter(new TextFormatter<>(change -> {
-            if (change.getControlNewText().matches("\\d*(\\.\\d*)?")) {
-                return change;
-            }
-            return null;
-        }));
-
-        textFieldUni.textProperty().addListener((observable, oldValue, newValue) -> calcularValorTotal());
         textFieldQntd.textProperty().addListener((observable, oldValue, newValue) -> calcularValorTotal());
     }
 
     private void calcularValorTotal() {
         try {
-            double valorProduto = Double.parseDouble(textFieldUni.getText());
+            Produto produto = comboBoxProdutos.getSelectionModel().getSelectedItem();
             int quantidade = Integer.parseInt(textFieldQntd.getText());
 
+            double valorProduto = produto.getValorUni();
             double valorTotal = valorProduto * quantidade;
 
-            textFieldTot.setText(String.format("%.2f", valorTotal));
+            textFieldTot.setText(Double.toString(valorTotal));
 
         } catch (NumberFormatException e) {
             textFieldTot.setText("");
@@ -89,24 +98,36 @@ public class CadastrarPedidoController implements Initializable {
             alert.show();
             return;
         }
-
-        String nome = textFieldNome.getText();
-        double valorUni = Double.parseDouble(textFieldUni.getText());
+        
+        Produto produto = comboBoxProdutos.getSelectionModel().getSelectedItem();
+        Pedido pedido = new Pedido();
+        
+        String nome = produto.getNome();
         int quantidade = Integer.parseInt(textFieldQntd.getText());
         double valorTot = Double.parseDouble(textFieldTot.getText());
-        String marca = textFieldMarca.getText();
         String obs = textAreaObs.getText();
         String formaPag = comboBoxForma.getSelectionModel().getSelectedItem();
+        
         
         Alert alert = new Alert(Alert.AlertType.NONE);
         try {
 
-            Pedido pedido = new Pedido();
             ControllerCadastroPedido controllerCP = new ControllerCadastroPedido();
 
+            Date data = new Date();
+            
             pedido.setValorTotal(valorTot);
+            pedido.setData(data);
+            pedido.setFormaPag(formaPag);
+            pedido.setObs(obs);
+            pedido.setQntd(quantidade);
+            pedido.setValorTotal(valorTot);
+            pedido.setStatus(StatusPedido.EM_PREPARACAO);
 
             controllerCP.cadastrarPedido(pedido);
+            
+            alert.setAlertType(Alert.AlertType.INFORMATION);
+            alert.setContentText("Pedido cadastrado com sucesso! ");
 
         } catch (Exception e) {
 
@@ -117,7 +138,7 @@ public class CadastrarPedidoController implements Initializable {
         }
 
         alert.show();
-        Stage stage = (Stage) textFieldNome.getScene().getWindow();
+        Stage stage = (Stage) textFieldQntd.getScene().getWindow();
         stage.close();
         
         try {
@@ -125,6 +146,8 @@ public class CadastrarPedidoController implements Initializable {
             ItemPedido itemPedido = new ItemPedido();
             ControllerCadastroItemPedido controllerCIP = new ControllerCadastroItemPedido();
 
+            itemPedido.setIdPedido(pedido.getId());
+            itemPedido.setIdProduto(produto.getId());
             itemPedido.setQuantidade(quantidade);
 
             controllerCIP.cadastrarItemPedido(itemPedido);
@@ -138,21 +161,15 @@ public class CadastrarPedidoController implements Initializable {
         }
 
         alert.show();
-        stage = (Stage) textFieldNome.getScene().getWindow();
+        stage = (Stage) textFieldQntd.getScene().getWindow();
         stage.close();
     }
 
     private Boolean verificarCampos() {
 
-        if (textFieldNome.getText().isEmpty()) {
-            return false;
-        } else if (textFieldUni.getText().isEmpty()) {
-            return false;
-        } else if (textFieldQntd.getText().isEmpty()) {
+        if (textFieldQntd.getText().isEmpty()) {
             return false;
         } else if (textFieldTot.getText().isEmpty()) {
-            return false;
-        } else if (textFieldMarca.getText().isEmpty()) {
             return false;
         } else if (textAreaObs.getText().isEmpty()) {
             return false;
@@ -162,5 +179,4 @@ public class CadastrarPedidoController implements Initializable {
 
         return true;
     }
-
 }

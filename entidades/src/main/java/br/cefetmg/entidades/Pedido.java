@@ -11,6 +11,9 @@ public class Pedido {
     private Date data;
     private double valorTotal;
     private StatusPedido status;
+    private String obs;
+    private String formaPag;
+    private int qntd; 
 
     public Date getData() {
         return data;
@@ -43,4 +46,28 @@ public class Pedido {
     public void setId(int id) {
         this.id = id;
     }
+
+    public String getObs() {
+        return obs;
+    }
+
+    public void setObs(String obs) {
+        this.obs = obs;
+    }
+
+    public String getFormaPag() {
+        return formaPag;
+    }
+
+    public void setFormaPag(String formaPag) {
+        this.formaPag = formaPag;
+    }
+
+    public int getQntd() {
+        return qntd;
+    }
+
+    public void setQntd(int qntd) {
+        this.qntd = qntd;
+    } 
 }

@@ -77,7 +77,7 @@ public class ProdutoDAO {
 
     }
 
-    public void getProdutos() {
+    public List<Produto> getProdutos() {
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("persistence");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -88,14 +88,8 @@ public class ProdutoDAO {
         criteria.select(criteria.from(Produto.class));
         List<Produto> produtos = entityManager.createQuery(criteria).getResultList();
 
-        for (Produto produto : produtos) {
-            System.out.println("Nome do produto: " + produto.getNome());
-            System.out.println("ID do produto: " + produto.getId());
-            System.out.println("Marca do produto: " + produto.getMarca());
-            System.out.println("Valor do produto: " + produto.getValorUni());
-        }
-
         entityManager.close();
 
+        return produtos;
     }
 }
