@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/22" fx:controller="br.cefetmg.view.EscolhaDeContaController">
+   <children>
+      <Label layoutX="118.0" layoutY="41.0" prefHeight="50.0" prefWidth="364.0" text="Qual tipo de conta deseja criar?">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Button fx:id="escolhaContaCliente" layoutX="84.0" layoutY="200.0" mnemonicParsing="false" onAction="#CriarContaDeCliente" prefHeight="26.0" prefWidth="155.0" text="Conta de Cliente" />
+      <Button fx:id="escolhaContaEntregador" layoutX="365.0" layoutY="200.0" mnemonicParsing="false" onAction="#CriarContaDeEntregador" prefHeight="26.0" prefWidth="155.0" text="Conta de Entregador" />
+   </children>
+</AnchorPane>

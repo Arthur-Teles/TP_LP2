@@ -1,6 +1,7 @@
 package br.cefetmg.dao;
 
 import br.cefetmg.entidades.Funcionario;
+import br.cefetmg.entidades.utils.Encriptador;
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaQuery;
 import java.util.*;
@@ -99,5 +100,19 @@ public class FuncionarioDAO {
 
         entityManager.close();
 
+    }
+    
+    public List<Funcionario> encontrarFuncionario(String username, String senha) {
+        Encriptador encriptador = new Encriptador();
+        String senhaEncriptada = encriptador.encriptarSenha(senha);
+        
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("persistence");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        
+        TypedQuery<Funcionario> query = entityManager.createQuery("SELECT f FROM Funcionario f WHERE f.username = '"+username+"' AND f.senha = '"+senhaEncriptada+"'", Funcionario.class);
+
+        List<Funcionario> resultado = query.getResultList();
+        
+        return resultado;
     }
 }

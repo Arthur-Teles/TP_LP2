@@ -1,59 +1,55 @@
 package br.cefetmg.view;
 
-import br.cefetmg.controller.ControllerCadastroCliente;
-import br.cefetmg.entidades.Cliente;
-import java.io.IOException;
+import br.cefetmg.controller.ControllerCadastroFuncionario;
+import br.cefetmg.entidades.Funcionario;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class CadastrarClienteController implements Initializable {
-
+public class CadastrarEntregadorController implements Initializable {
+    
     @FXML
     private TextField textFieldNome;
 
     @FXML
-    private TextField textFieldLogradouro;
-
-    @FXML
-    private TextField textFieldBairro;
-    
-    @FXML
-    private TextField textFieldCPF;
-    
-    @FXML
     private TextField textFieldTelefone;
-
+    
     @FXML
     private TextField textFieldUsername;
 
     @FXML
     private TextField textFieldSenha;
-
+    
     @FXML
-    private Button enviarButton;
-
+    private Button enviar;
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        textFieldNome.textProperty().addListener((observable, oldValue, newValue) -> calcularValorTotal());
+        textFieldTelefone.textProperty().addListener((observable, oldValue, newValue) -> calcularValorTotal());
+    }
+    
+    public void calcularValorTotal() {
+    
     }
 
     @FXML
-    public void cadastrarCliente() throws IOException {
-
+    public void cadastrarFuncionario() {
+        
         String nome = textFieldNome.getText();
-        String logradouro = textFieldLogradouro.getText();
-        String bairro = textFieldBairro.getText();
-        String cpf = textFieldCPF.getText();
         String telefone = textFieldTelefone.getText();
+        String tipo = "Entregador";
         String username = textFieldUsername.getText();
         String senha = textFieldSenha.getText();
-
+        
         if (verificarCampos() == false) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Todos os campos precisam ser preenchidos");
@@ -61,27 +57,23 @@ public class CadastrarClienteController implements Initializable {
             alert.show();
             return;
         }
-
+        
         Alert alert = new Alert(Alert.AlertType.NONE);
         try {
 
-            Cliente cliente = new Cliente();
-            ControllerCadastroCliente controllerCC = new ControllerCadastroCliente();
+            Funcionario funcionario = new Funcionario();
+            ControllerCadastroFuncionario controllerCF = new ControllerCadastroFuncionario();
 
-            long cpfLong = Long.parseLong(cpf);
+            funcionario.setNome(nome);
+            funcionario.setTelefone(telefone);
+            funcionario.setTipoPerfil(tipo);
+            funcionario.setUsername(username);
+            funcionario.setSenha(senha);
             
-            cliente.setNome(nome);
-            cliente.setLogradouro(logradouro);
-            cliente.setBairro(bairro);
-            cliente.setCPF(cpfLong);
-            cliente.setSenha(senha);
-            cliente.setTelefone(telefone);
-            cliente.setUsername(username);
-
-            controllerCC.cadastrarCliente(cliente);
+            controllerCF.cadastrarFuncionario(funcionario);
             
             alert.setAlertType(Alert.AlertType.INFORMATION);
-            alert.setContentText("Cliente cadastrado com sucesso! ");
+            alert.setContentText("Funcionario cadastrado com sucesso! ");
 
         } catch (Exception e) {
 
@@ -92,32 +84,23 @@ public class CadastrarClienteController implements Initializable {
         }
 
         alert.show();
-        //Stage stage = (Stage) textFieldLogradouro.getScene().getWindow();
-        //stage.close();
-        App.setRoot("login");
+        Stage stage = (Stage) textFieldNome.getScene().getWindow();
+        stage.close();
     }
-    
     
     private Boolean verificarCampos() {
 
         if (textFieldNome.getText().isEmpty()) {
             return false;
-        } else if (textFieldLogradouro.getText().isEmpty()) {
-            return false;
-        } else if (textFieldBairro.getText().isEmpty()) {
-            return false;
-        } else if (textFieldCPF.getText().isEmpty()) {
-            return false;
         } else if (textFieldTelefone.getText().isEmpty()) {
             return false;
-        } else if (textFieldUsername.getText().isEmpty()) {
-            return false;
         } else if (textFieldSenha.getText().isEmpty()) {
+            return false;
+        } else if (textFieldUsername.getText().isEmpty()) {
             return false;
         }
 
         return true;
 
     }
-
 }

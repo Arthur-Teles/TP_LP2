@@ -10,6 +10,7 @@ br\cefetmg\entidades\Pedido_.class
 br\cefetmg\entidades\Empresa.class
 br\cefetmg\entidades\Produto.class
 br\cefetmg\entidades\Entidades.class
+br\cefetmg\entidades\utils\SessaoUsuario.class
 br\cefetmg\entidades\ItemPedido_.class
 br\cefetmg\entidades\StatusPedido.class
 br\cefetmg\entidades\ItemPedido.class
