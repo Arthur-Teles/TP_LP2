@@ -80,7 +80,7 @@ public class PedidoDAO {
 
     }
 
-    public void getPedidos() {
+    public List<Pedido> getPedidos() {
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("persistence");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -91,14 +91,6 @@ public class PedidoDAO {
         criteria.select(criteria.from(Pedido.class));
         List<Pedido> pedidos = entityManager.createQuery(criteria).getResultList();
 
-        for (Pedido pedido : pedidos) {
-            System.out.println("ID do pedido: " + pedido.getId());
-            System.out.println("Data do pedido: " + pedido.getData());
-            System.out.println("Valor total do pedido: " + pedido.getValorTotal());
-            System.out.println("Status do pedido: " + String.valueOf(pedido.getStatus()));
-        }
-        
-        entityManager.close();
-
+        return pedidos;
     }
 }

@@ -40,14 +40,16 @@ public class LoginController {
             
             controleSessao.setInfosUsuario(clienteRecuperado.getUsername(), clienteRecuperado.getSenha(), 3);
             
-            App.setRoot("secondary"); //tela do cliente
+            App.setRoot("cadastrarPedido"); //tela do cliente
         }
         else if (!funcionarioLogado.isEmpty()) {
             Funcionario funcionarioRecuperado = funcionarioLogado.get(0);
             
             controleSessao.setInfosUsuario(funcionarioRecuperado.getUsername(), funcionarioRecuperado.getSenha(), funcionarioRecuperado.getTipoPerfil().ordinal());
             
-            App.setRoot("secondary"); //tela do funcionario
+            if (funcionarioRecuperado.getTipoPerfil().ordinal() == 2)
+                App.setRoot("visualizarEntregas"); //tela do funcionario
+            // else
         }
         else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

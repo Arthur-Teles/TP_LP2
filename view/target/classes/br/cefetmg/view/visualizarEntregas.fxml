@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.cefetmg.view.VisualizarEntregasController">
+   <children>
+      <Label layoutX="188.0" layoutY="31.0" text="SUAS ENTREGAS">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      
+      <TableView fx:id="tabela" layoutX="21.0" layoutY="93.0" prefHeight="400.0" prefWidth="552.0">
+        <columns>
+            <TableColumn fx:id="cpfCol" prefWidth="100.79998779296875" text="CPF do Cliente" />
+            <TableColumn fx:id="dataCol" prefWidth="131.20001220703125" text="Data do Pedido" />
+            <TableColumn fx:id="pagCol" prefWidth="133.5999755859375" text="Forma de Pagamento" />
+            <TableColumn fx:id="totalCol" prefWidth="78.4000244140625" text="Valor Total" />
+            <TableColumn fx:id="obsCol" prefWidth="109.60009765625" text="Observações" />
+        </columns>
+      </TableView>
+      
+   </children>
+</AnchorPane>

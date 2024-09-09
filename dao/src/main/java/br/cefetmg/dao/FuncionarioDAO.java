@@ -79,7 +79,7 @@ public class FuncionarioDAO {
 
     }
 
-    public void getFuncionarios() {
+    public List<Funcionario> getFuncionarios() {
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("persistence");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -90,16 +90,7 @@ public class FuncionarioDAO {
         criteria.select(criteria.from(Funcionario.class));
         List<Funcionario> funcionarios = entityManager.createQuery(criteria).getResultList();
 
-        for (Funcionario funcionario : funcionarios) {
-            System.out.println("Nome do funcionario: " + funcionario.getNome());
-            System.out.println("Id do funcionario: " + funcionario.getId());
-            System.out.println("Senha do funcionario: " + funcionario.getSenha());
-            System.out.println("Telefone do funcionario: " + funcionario.getTelefone());
-            System.out.println("Username do funcionario: " + funcionario.getUsername());
-        }
-
-        entityManager.close();
-
+        return funcionarios;
     }
     
     public List<Funcionario> encontrarFuncionario(String username, String senha) {
@@ -110,6 +101,17 @@ public class FuncionarioDAO {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         
         TypedQuery<Funcionario> query = entityManager.createQuery("SELECT f FROM Funcionario f WHERE f.username = '"+username+"' AND f.senha = '"+senhaEncriptada+"'", Funcionario.class);
+
+        List<Funcionario> resultado = query.getResultList();
+        
+        return resultado;
+    }
+    
+    public List<Funcionario> encontrarFuncionarioJaEncriptada(String username, String senha) {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("persistence");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        
+        TypedQuery<Funcionario> query = entityManager.createQuery("SELECT f FROM Funcionario f WHERE f.username = '"+username+"' AND f.senha = '"+senha+"'", Funcionario.class);
 
         List<Funcionario> resultado = query.getResultList();
         

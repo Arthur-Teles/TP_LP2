@@ -14,6 +14,8 @@ public class Pedido {
     private String obs;
     private String formaPag;
     private int qntd; 
+    private long CPFCliente;
+    private int idEntregador;
 
     public Date getData() {
         return data;
@@ -70,4 +72,20 @@ public class Pedido {
     public void setQntd(int qntd) {
         this.qntd = qntd;
     } 
+
+    public long getCPFCliente() {
+        return CPFCliente;
+    }
+
+    public void setCPFCliente(long idCliente) {
+        this.CPFCliente = idCliente;
+    }
+
+    public int getIdEntregador() {
+        return idEntregador;
+    }
+
+    public void setIdEntregador(int idEntregador) {
+        this.idEntregador = idEntregador;
+    }
 }

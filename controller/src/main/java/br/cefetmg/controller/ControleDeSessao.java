@@ -10,15 +10,15 @@ public class ControleDeSessao {
         sessao.setTipoConta(tipoConta);
     }
     
-    public void getUsernameSessao() {
-        SessaoUsuario.getInstance().getUsername();
+    public String getUsernameSessao() {
+        return SessaoUsuario.getInstance().getUsername();
     }
     
-    public void getSenhaSessao() {
-        SessaoUsuario.getInstance().getSenha();
+    public String getSenhaSessao() {
+        return SessaoUsuario.getInstance().getSenha();
     }
     
-    public void getTipoContaSessao() {
-        SessaoUsuario.getInstance().getTipoConta();
+    public int getTipoContaSessao() {
+        return SessaoUsuario.getInstance().getTipoConta();
     }
 }

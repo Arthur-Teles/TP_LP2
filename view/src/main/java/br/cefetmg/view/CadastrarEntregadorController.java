@@ -2,6 +2,7 @@ package br.cefetmg.view;
 
 import br.cefetmg.controller.ControllerCadastroFuncionario;
 import br.cefetmg.entidades.Funcionario;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -42,7 +43,7 @@ public class CadastrarEntregadorController implements Initializable {
     }
 
     @FXML
-    public void cadastrarFuncionario() {
+    public void cadastrarFuncionario() throws IOException {
         
         String nome = textFieldNome.getText();
         String telefone = textFieldTelefone.getText();
@@ -84,8 +85,8 @@ public class CadastrarEntregadorController implements Initializable {
         }
 
         alert.show();
-        Stage stage = (Stage) textFieldNome.getScene().getWindow();
-        stage.close();
+        
+        App.setRoot("login");
     }
     
     private Boolean verificarCampos() {

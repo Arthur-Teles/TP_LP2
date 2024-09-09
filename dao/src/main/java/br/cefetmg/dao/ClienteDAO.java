@@ -113,4 +113,16 @@ public class ClienteDAO {
         
         return resultado;
     }
+    
+    public List<Cliente> encontrarClienteJaEncriptada(String username, String senha) {
+
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("persistence");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+ 
+        TypedQuery<Cliente> query = entityManager.createQuery("SELECT c FROM Cliente c WHERE c.username = '"+username+"' AND c.senha = '"+senha+"'", Cliente.class);
+ 
+        List<Cliente> resultado = query.getResultList();
+        
+        return resultado;
+    }
 }

@@ -123,6 +123,9 @@ public class CadastrarPedidoController implements Initializable {
             pedido.setQntd(quantidade);
             pedido.setValorTotal(valorTot);
             pedido.setStatus(StatusPedido.EM_PREPARACAO);
+            
+            pedido.setCPFCliente(controllerCP.getCPFCliente());
+            pedido.setIdEntregador(controllerCP.getIdEntregador());
 
             controllerCP.cadastrarPedido(pedido);
             
